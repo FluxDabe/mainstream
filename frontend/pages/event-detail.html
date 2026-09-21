@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Mainstream — Event</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body onload="loadDetail()">
+    <div class="app">
+        <aside class="sidebar">
+            <div class="brand"><span class="brand-mark">M</span> Mainstream</div>
+            <div class="nav-label">Event workspace</div>
+            <nav class="nav"><a href="dashboard.html">▦ <span>Dashboard</span></a><a class="active" href="#">◫
+                    <span>Event detail</span></a><a href="#report">▤ <span>Report</span></a><a href="#ai">✦ <span>AI
+                        Studio</span></a></nav>
+        </aside>
+        <main class="main">
+            <header class="topbar">
+                <div class="top-title">Event workspace</div><a class="btn btn-ghost" href="dashboard.html">← Events</a>
+            </header>
+            <div class="content">
+                <div id="error" class="error"></div>
+                <section class="card detail-hero">
+                    <div class="event-title">
+                        <div>
+                            <div class="eyebrow" style="color:#a9a9ff">Event workspace</div>
+                            <h1 id="eventName" style="font-size:32px;margin:0 0 4px">Loading...</h1>
+                            <div id="eventType" class="muted"></div>
+                        </div><span id="statusBadge" class="badge">-</span>
+                    </div>
+                    <p id="eventDescription" class="muted" style="max-width:800px;margin-top:18px"></p>
+                    <div id="heroMeta" class="meta-row"></div>
+                    <div class="actions" style="margin-top:20px"><button class="btn btn-primary" onclick="openModal('event')">Chỉnh sửa</button><button class="btn btn-danger"
+                            onclick="deleteEvent()">Xóa event</button><a id="reportLink" class="btn"
+                            href="#report">Report</a><a class="btn" href="#ai">AI Studio</a></div>
+                </section>
+                <div class="grid grid-4" style="margin-top:18px">
+                    <div class="card stat"><span class="muted">Tasks</span>
+                        <div id="statTasks" class="stat-value">0</div>
+                    </div>
+                    <div class="card stat"><span class="muted">Completed</span>
+                        <div id="statDone" class="stat-value">0</div>
+                    </div>
+                    <div class="card stat"><span class="muted">Departments</span>
+                        <div id="statDept" class="stat-value">0</div>
+                    </div>
+                    <div class="card stat"><span class="muted">Timeline</span>
+                        <div id="statTimeline" class="stat-value">0</div>
+                    </div>
+                </div>
+                <div class="grid grid-2" style="margin-top:18px">
+                    <section class="card">
+                        <div class="page-head" style="margin-bottom:5px">
+                            <div>
+                                <h2>Departments</h2>
+                                <p class="muted">Các nhóm tham gia event.</p>
+                            </div><button class="btn btn-primary btn-sm" onclick="openModal('department')">+
+                                Add</button>
+                        </div>
+                        <div id="departments"></div>
+                    </section>
+                    <section class="card">
+                        <div class="page-head" style="margin-bottom:5px">
+                            <div>
+                                <h2>Timeline</h2>
+                                <p class="muted">Các mốc chính của chương trình.</p>
+                            </div><button class="btn btn-primary btn-sm" onclick="openModal('timeline')">+ Add</button>
+                        </div>
+                        <div id="timeline"></div>
+                    </section>
+                </div>
+                <section class="card" style="margin-top:18px">
+                    <div class="page-head" style="margin-bottom:5px">
+                        <div>
+                            <h2>Tasks</h2>
+                            <p class="muted">Theo dõi tiến độ thực thi.</p>
+                        </div><button class="btn btn-primary btn-sm" onclick="openModal('task')">+ Add task</button>
+                    </div>
+                    <div id="tasks"></div>
+                </section>
+                <section id="report" class="card" style="margin-top:18px">
+                    <h2>Report</h2>
+                    <div id="reportContent">
+                        <div class="empty">Loading report...</div>
+                    </div>
+                </section>
+                <section id="ai" class="card" style="margin-top:18px">
+                    <div class="eyebrow">AI Studio</div>
+                    <h2 style="margin:6px 0">Hiện tại chưa tích hợp, sẽ có trong tương lai gần</h2>
+                    <p class="muted">Các chức năng AI sẽ được nối ở phase tiếp theo. Toàn bộ luồng quản lý event, department, task, timeline và report vẫn hoạt động độc lập.</p>
+                </section>
+            </div>
+        </main>
+    </div>
+    <div id="modal" class="modal-backdrop">
+        <div class="modal">
+            <div class="modal-head">
+                <h2 id="modalTitle" style="margin:0">Add</h2><button class="btn btn-ghost"
+                    onclick="closeModal()">✕</button>
+            </div>
+            <div id="modalBody"></div>
+            <div class="actions" style="justify-content:flex-end;margin-top:20px"><button class="btn"
+                    onclick="closeModal()">Hủy</button><button id="modalSave" class="btn btn-primary">Lưu</button></div>
+        </div>
+    </div>
+    <div id="toast" class="toast"></div>
+    <script src="../js/api.js"></script>
+    <script src="../js/event-detail.js"></script>
+    <script src="../js/ai.js"></script>
+</body>
+
+</html>
