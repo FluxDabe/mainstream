@@ -1,3 +1,5 @@
+Praise The Omnissiah
+
 # Mainstream MVP Frontend for mainstream-main
 
 ## Chạy frontend
